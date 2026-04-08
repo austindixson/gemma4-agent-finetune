@@ -1,0 +1,75 @@
+# Model weights and checkpoints
+outputs/
+checkpoints/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Datasets (too large for repo)
+agent-dataset-unsloth/
+*.jsonl
+*.json
+
+# Training logs and artifacts
+training_*.log
+*.log
+*.out
+logs/
+runs/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# HuggingFace cache
+.cache/
+.hf_home/
+.transformers_cache/
+.datasets_cache/
+
+# Iteration summaries (optional - comment out if you want to track)
+# iterations_summary/
+
+# Temporary files
+*.tmp
+tmp/
+*.backup
+
+# Cleanup scripts (optional)
+*_cleanup.sh
+
+# Large analysis files
+timeline_summary.md
+visual_summary.txt
+autoresearch_*.md
+lora_alpha_explanation.md
+alpha_limits_guide.md
+
+# Keep the essentials:
+# - Python scripts (*.py)
+# - Requirements (requirements.txt if created)
+# - README (add documentation)
+# - Config files
