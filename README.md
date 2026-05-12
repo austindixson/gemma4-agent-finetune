@@ -108,3 +108,18 @@ tail -f training_*.log
 ---
 
 *Training in progress - Iteration 6/10*
+
+## Visual Overview
+
+![Install flow](docs/assets/install-flow.png)
+
+![Setup flow](docs/assets/setup-flow.png)
+
+To regenerate these visuals:
+
+```bash
+cd docs/remotion
+npm install
+npm run render:all
+```
+
