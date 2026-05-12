@@ -73,4 +73,5 @@ alpha_limits_guide.md
 # - Requirements (requirements.txt if created)
 # - README (add documentation)
 # - Config files
+node_modules/
 docs/remotion/node_modules/
