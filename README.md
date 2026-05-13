@@ -111,15 +111,5 @@ tail -f training_*.log
 
 ## Visual Overview
 
-![Install flow](docs/assets/install-flow.png)
-
-![Setup flow](docs/assets/setup-flow.png)
-
-To regenerate these visuals:
-
-```bash
-cd docs/remotion
-npm install
-npm run render:all
-```
+![gemma4-agent-finetune visual overview](docs/assets/visual-overview-gemma4-agent-finetune.svg)
 
