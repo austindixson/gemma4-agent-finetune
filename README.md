@@ -2,6 +2,59 @@
 
 Training setup for fine-tuning Gemma-4-21B-A4B-IT-REAP with LoRA adapters for agent tasks.
 
+## Installation
+
+2) Clone and enter the repo
+```bash
+git clone <repo-url>
+cd <repo-name>
+```
+
+## Quick Start
+
+```bash
+# See repository-specific setup below
+```
+
+## Usage Examples
+
+- Start LoRA fine-tuning (example)
+```bash
+python train.py --config configs/lora.yaml
+```
+
+## Implementation Overview
+
+This repository is implemented primarily in **Mixed** and organized around explicit runtime entrypoints plus supporting modules.
+
+### Key Directories
+
+- `docs/`
+
+### Key Files
+
+- `README.md`
+
+### Entrypoints
+
+- `benchmark_model.py`
+- `create_merge_script.py`
+- `evaluate_finetuned.py`
+- `fine_tune_blackwell.py`
+- `fix_trainer.py`
+
+## Troubleshooting
+
+- If startup fails, run the primary command with verbose flags and capture stderr logs.
+- If dependencies conflict, remove lock artifacts and reinstall in a clean shell.
+- If tests fail intermittently, run a single test target first, then full suite.
+- Ensure environment variables are loaded before running build/train commands.
+
+## Visual Overview
+
+![gemma4-agent-finetune visual overview](docs/assets/visual-overview-gemma4-agent-finetune.svg)
+
+
 ## Overview
 
 **Model:** Gemma-4-21B-A4B-IT-REAP (21.4B parameters, MoE with 103 experts)
@@ -68,23 +121,6 @@ MAX_STEPS = 500
 - **Current**: Iteration 6 in progress
 - **Best Model**: Iteration 4/5 (loss: 2.655)
 
-## Usage
-
-### Start Training
-```bash
-source ~/miniconda/bin/activate gemma-h100
-python fine_tune_blackwell.py
-```
-
-### Resume from Last Iteration
-```bash
-python iterate_resume.py
-```
-
-### Monitor Training
-```bash
-tail -f training_*.log
-```
 
 ## Requirements
 
@@ -108,8 +144,3 @@ tail -f training_*.log
 ---
 
 *Training in progress - Iteration 6/10*
-
-## Visual Overview
-
-![gemma4-agent-finetune visual overview](docs/assets/visual-overview-gemma4-agent-finetune.svg)
-
