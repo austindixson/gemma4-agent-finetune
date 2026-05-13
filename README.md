@@ -4,51 +4,50 @@ Training setup for fine-tuning Gemma-4-21B-A4B-IT-REAP with LoRA adapters for ag
 
 ## Installation
 
-2) Clone and enter the repo
 ```bash
-git clone <repo-url>
-cd <repo-name>
+# Example: conda env used by project scripts
+conda create -n gemma-h100 python=3.10 -y
+conda activate gemma-h100
+pip install -U pip
+pip install unsloth transformers datasets trl peft accelerate wandb
 ```
 
 ## Quick Start
 
 ```bash
-# See repository-specific setup below
+chmod +x run_training.sh
+./run_training.sh
 ```
 
 ## Usage Examples
 
-- Start LoRA fine-tuning (example)
+- Run scripted training session with logging
 ```bash
-python train.py --config configs/lora.yaml
+./run_training.sh
+```
+
+- Direct training invocation (from script)
+```bash
+python fine_tune_blackwell.py 2>&1 | tee training_$(date +%Y%m%d_%H%M%S).log
+```
+
+- Iterative tuning helper
+```bash
+python iterate_training_10x.py
 ```
 
 ## Implementation Overview
 
-This repository is implemented primarily in **Mixed** and organized around explicit runtime entrypoints plus supporting modules.
-
-### Key Directories
-
-- `docs/`
-
-### Key Files
-
-- `README.md`
-
-### Entrypoints
-
-- `benchmark_model.py`
-- `create_merge_script.py`
-- `evaluate_finetuned.py`
-- `fine_tune_blackwell.py`
-- `fix_trainer.py`
+- `run_training.sh` is the operational entrypoint (env activation, WANDB setup, launch).
+- `fine_tune_blackwell.py` (invoked by script) performs LoRA/finetune run logic.
+- `iterate_training_10x.py` and `fix_trainer.py` support iterative stabilization.
+- `TRAINING_STATUS.md` and `TRAINING_SCRIPT_SUMMARY.md` document training state and decisions.
 
 ## Troubleshooting
 
-- If startup fails, run the primary command with verbose flags and capture stderr logs.
-- If dependencies conflict, remove lock artifacts and reinstall in a clean shell.
-- If tests fail intermittently, run a single test target first, then full suite.
-- Ensure environment variables are loaded before running build/train commands.
+- If CUDA/OOM occurs, lower batch size and grad accumulation before changing model family.
+- If WANDB logging fails, verify auth and set `WANDB_PROJECT`/`WANDB_RUN_NAME` explicitly.
+- If conda activation fails in non-interactive shells, source the conda profile script first.
 
 ## Visual Overview
 
