@@ -2,6 +2,49 @@
 
 Training setup for fine-tuning Gemma-4-21B-A4B-IT-REAP with LoRA adapters for agent tasks.
 
+## Presentation Framework (Proven README Pattern)
+
+### TL;DR
+Practical Gemma4 LoRA fine-tuning project with scripted run control and iterative trainer tuning.
+
+### Why this project
+- Solves a concrete workflow problem with reproducible command paths.
+- Prioritizes operator reliability over demo-only output.
+- Structured for practical use, not just conceptual documentation.
+
+### Quick Start
+```bash
+./run_training.sh
+```
+
+### Installation
+```bash
+conda create -n gemma-h100 python=3.10 -y
+conda activate gemma-h100
+pip install -U pip
+pip install unsloth transformers datasets trl peft accelerate wandb
+```
+
+### Usage Examples
+```bash
+chmod +x run_training.sh
+./run_training.sh
+python iterate_training_10x.py
+```
+
+### Architecture at a glance
+- run_training.sh — operational launcher
+- fine_tune_blackwell.py — training logic
+- TRAINING_STATUS.md / TRAINING_SCRIPT_SUMMARY.md — run history and tuning decisions
+
+### Troubleshooting
+- If conda activation fails in non-interactive shell, source conda profile first.
+- If OOM occurs, lower effective batch size before model changes.
+
+### Project status
+Continue loss/stability improvements with controlled iterative sweeps.
+
+
 ## Installation
 
 ```bash
@@ -143,3 +186,11 @@ MAX_STEPS = 500
 ---
 
 *Training in progress - Iteration 6/10*
+
+## Contributing
+
+Contributions are welcome. Open an issue first for significant changes, then submit a focused PR with reproducible validation steps.
+
+## License
+
+License details are documented in this repository.
